@@ -1,0 +1,34 @@
+import smtplib
+
+def x():
+    a = input("enter: ")
+    b = input("enter: ")
+    c = input("enter: ")
+
+
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+
+
+    server.login("your@gmail.com", "password")
+
+
+    sender_email = "your@gmail.com"
+    receiver_email = "example@gmail.com"  
+
+    subject = "Mail"
+    body = f"""\
+    enter: {a}
+    enter: {b}
+    enter: {c}
+    """
+
+    message = f"Subject: {subject}\n\n{body}"
+
+    server.sendmail(sender_email, receiver_email, message.encode('utf-8'))
+
+    server.quit()
+
+    print("Gönderildi")
+
+x()
